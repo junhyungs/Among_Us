@@ -1446,10 +1446,10 @@
     "m_Guid": {
         "m_GuidSerialized": "faf1f2af-4d03-4721-8cb6-397e5e6c3c57"
     },
-    "m_Name": "Main_Texture",
+    "m_Name": "_MainTex",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Main_Texture",
-    "m_DefaultReferenceName": "_Main_Texture",
+    "m_RefNameGeneratedByDisplayName": "_MainTex",
+    "m_DefaultReferenceName": "_MainTex",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -2508,7 +2508,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "ae07d2d63bd341d480fff635a0f8bcd7",
     "m_Id": 0,
-    "m_DisplayName": "Main_Texture",
+    "m_DisplayName": "_MainTex",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
