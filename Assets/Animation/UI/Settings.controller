@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Close
-  m_Speed: 1
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -43,9 +43,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.055420697
+  m_TransitionDuration: 0.05542071
   m_TransitionOffset: 0
-  m_ExitTime: 0.83058256
+  m_ExitTime: 0.66601944
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
