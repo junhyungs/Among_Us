@@ -6602,8 +6602,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1320427095}
   - component: {fileID: 1320427096}
+  - component: {fileID: 1320427097}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CrewSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6660,6 +6661,27 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 10.57
+--- !u!114 &1320427097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320427094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91dbfc9a2ad5f49852743ab66e15ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crewPrefab: {fileID: 3202612198744827182, guid: d9e649ef91cb9444bad6865867da4b81, type: 3}
+  _sprites:
+  - {fileID: 21300000, guid: 3ec0e51287b214b4a96c5e69413f2904, type: 3}
+  - {fileID: 21300000, guid: fc4e4c866473f284cbbc25f24948100c, type: 3}
+  - {fileID: 21300000, guid: 3a6ce1962e2775c408d56592fc94a307, type: 3}
+  - {fileID: 21300000, guid: 3a6ce1962e2775c408d56592fc94a307, type: 3}
+  - {fileID: 21300000, guid: eab8ba3a356d3b44ba3324239ebf3c90, type: 3}
+  - {fileID: 21300000, guid: 6072f0ba3fc79174881f59a2d0df05d3, type: 3}
+  - {fileID: 21300000, guid: a0048b227c8d85442a7184fd00b2fefe, type: 3}
 --- !u!1 &1336602805
 GameObject:
   m_ObjectHideFlags: 0
