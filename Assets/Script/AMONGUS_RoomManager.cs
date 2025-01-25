@@ -7,7 +7,9 @@ public class AMONGUS_RoomManager : NetworkRoomManager
     {
         base.OnRoomServerConnect(conn);
 
-        var playerObject = Instantiate(spawnPrefabs[0]); //spawnPrefabs -> 미리 등록해 놓은 네트워크 프리팹 리스트. 
+        var spawnPosition = SpawnPositions.instance.GetSpawnPosition();
+
+        var playerObject = Instantiate(spawnPrefabs[0], spawnPosition, Quaternion.identity); //spawnPrefabs -> 미리 등록해 놓은 네트워크 프리팹 리스트. 
 
         NetworkServer.Spawn(playerObject, conn);
 
