@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using Mirror;
 
 public class OnLineUI : MonoBehaviour
 {
@@ -22,6 +22,18 @@ public class OnLineUI : MonoBehaviour
 
             gameObject.SetActive(false);
             _createRoomUI.SetActive(true);
+        }
+        else
+        {
+            _animator.SetTrigger("On");
+        }
+    }
+
+    public void OnClickStartClient()
+    {
+        if (!string.IsNullOrWhiteSpace(_nickNameInputField.text))
+        {
+            AMONGUS_RoomManager.singleton.StartClient();
         }
         else
         {
