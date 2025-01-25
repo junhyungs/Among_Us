@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class CreateRoomUI : MonoBehaviour
 {
@@ -125,6 +126,11 @@ public class CreateRoomUI : MonoBehaviour
                 _crewImages[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void CreateRoom() 
+    {
+        AMONGUS_RoomManager.singleton.StartHost();
     }
 }
 
