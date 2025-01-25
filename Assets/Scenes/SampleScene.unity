@@ -5287,7 +5287,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 95998739}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateImposterCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &95998739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6340,7 +6352,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 310471539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateMaxPlayerCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &310471539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7238,7 +7262,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 522503647}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateMaxPlayerCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 8
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &522503647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7522,7 +7558,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 633718240}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateImposterCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &633718240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7959,7 +8007,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 721522918}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateMaxPlayerCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &721522918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8080,7 +8140,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 726194053}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateMaxPlayerCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &726194053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9390,6 +9462,7 @@ GameObject:
   - component: {fileID: 1172458626}
   - component: {fileID: 1172458628}
   - component: {fileID: 1172458627}
+  - component: {fileID: 1172458629}
   m_Layer: 5
   m_Name: CreateRoom
   m_TagString: Untagged
@@ -9459,6 +9532,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172458625}
   m_CullTransparentMesh: 1
+--- !u!114 &1172458629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172458625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57c3b2bac9bf9f40beffd2d099ceee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crewImages:
+  - {fileID: 229230530}
+  - {fileID: 1297293715}
+  - {fileID: 837102490}
+  - {fileID: 1965263943}
+  - {fileID: 413013291}
+  - {fileID: 2124089604}
+  - {fileID: 1423792344}
+  - {fileID: 1699736755}
+  - {fileID: 159506435}
+  - {fileID: 1028698909}
+  _imposterCountButtons:
+  - {fileID: 633718239}
+  - {fileID: 95998738}
+  - {fileID: 2086986332}
+  _maxPlayerCountButtons:
+  - {fileID: 1935421513}
+  - {fileID: 1394748376}
+  - {fileID: 721522917}
+  - {fileID: 726194052}
+  - {fileID: 522503646}
+  - {fileID: 2122854377}
+  - {fileID: 310471538}
 --- !u!1 &1184016894
 GameObject:
   m_ObjectHideFlags: 0
@@ -10219,7 +10327,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1394748377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateMaxPlayerCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1394748377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12075,7 +12195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1935421514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateMaxPlayerCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1935421514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12648,7 +12780,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2086986333}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateImposterCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2086986333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12769,7 +12913,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2122854378}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172458629}
+        m_TargetAssemblyTypeName: CreateRoomUI, Assembly-CSharp
+        m_MethodName: UpdateMaxPlayerCount
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 9
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2122854378
 MonoBehaviour:
   m_ObjectHideFlags: 0
