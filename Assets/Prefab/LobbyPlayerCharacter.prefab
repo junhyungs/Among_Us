@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7093661776247274398}
   - component: {fileID: 3460750423640032727}
   - component: {fileID: 4748998871996164321}
+  - component: {fileID: 6728109044750098241}
   m_Layer: 3
   m_Name: LobbyPlayerCharacter
   m_TagString: Untagged
@@ -272,3 +273,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.53130895, y: 0.1021913}
   m_EdgeRadius: 0
+--- !u!114 &6728109044750098241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008881958466636479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48acdaaba61c7042b3a7aef3d50832e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sortType: 1
