@@ -9,4 +9,5 @@ public enum ControlType
 public class PlayerSettings
 {
     public static ControlType _controlType;
+    public static string _nickName;
 }
