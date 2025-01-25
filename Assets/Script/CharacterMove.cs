@@ -57,7 +57,20 @@ public class CharacterMove : NetworkBehaviour
             }
 
             _animator.SetBool("isMove", isMove);
+            //CommandAnimationMovement(isMove);
         }
+    }
+
+    [Command]
+    private void CommandAnimationMovement(bool isMove) //최적화를 위해서는 커맨드 호출보다는 NetworkAnimator 컴포넌트 사용하는게 더 좋음.
+    {
+        ClientRPCAnimationMovement(isMove);
+    }
+
+    [ClientRpc]
+    private void ClientRPCAnimationMovement(bool isMove)
+    {
+        _animator.SetBool("isMove", isMove);
     }
 
     [Command]
