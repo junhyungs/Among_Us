@@ -44,7 +44,7 @@ public class CharacterMove : NetworkBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(ColorType));
