@@ -12,42 +12,8 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
 
     public CharacterMove _characterMove;
 
-    private static AMONGUS_RoomPlayer _myRoomPlayer;
-
     //[System.Obsolete] 어트리뷰트는 메서드나 클래스가 더 이상 사용되지 않음을 알려주는 경고/오류 시스템을 제공
-    public static AMONGUS_RoomPlayer MyRoomPlayer
-    {
-        get
-        {
-            if(_myRoomPlayer == null)
-            {
-                _myRoomPlayer = GetMyRoomPlayer();
-            }
-
-            return _myRoomPlayer;
-        }
-    }
-
-    private static AMONGUS_RoomPlayer GetMyRoomPlayer()
-    {
-        if (NetworkManager.singleton is AMONGUS_RoomManager roomManager)
-        {
-            var roomSlots = roomManager.roomSlots;
-
-            foreach (var networkroomplayer in roomSlots)
-            {
-                if (networkroomplayer.isOwned)
-                {
-                    _myRoomPlayer = networkroomplayer as AMONGUS_RoomPlayer;
-
-                    break;
-                }
-            }
-        }
-
-        return _myRoomPlayer;
-    }
-
+    public static AMONGUS_RoomPlayer MyRoomPlayer { get; set; }
 
     public override void Start()
     {
