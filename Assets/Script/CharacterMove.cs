@@ -6,9 +6,37 @@ public class CharacterMove : NetworkBehaviour
     private SpriteRenderer _characterSpriteRenderer;
     private Animator _animator;
 
-    public bool _isMoving;
+    private bool _isMoving;
+    public bool IsMoving
+    {
+        get { return _isMoving; }
+        set
+        {
+            if (!value)
+            {
+                _animator.SetBool("isMove", value);
+            }
+
+            _isMoving = value;
+        }
+    }
     [SyncVar]
     private float _moveSpeed = 2f;
+
+    private SpriteRenderer _spriteRenderer;
+
+    [SyncVar(hook = nameof(SetPlayerColor_Hook))]
+    public PlayerColorType ColorType;
+
+    public void SetPlayerColor_Hook(PlayerColorType previousColor, PlayerColorType newColor)
+    {
+        if(_spriteRenderer == null)
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        _spriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(newColor));
+    }
 
     private void Awake()
     {
@@ -18,6 +46,9 @@ public class CharacterMove : NetworkBehaviour
 
     private void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(ColorType));
+
         if (isOwned)
         {
             Camera mainCamera = Camera.main;
@@ -34,7 +65,7 @@ public class CharacterMove : NetworkBehaviour
 
     public void Move()
     {
-        if(isOwned && _isMoving)
+        if(isOwned && IsMoving)
         {
             bool isMove = false;
 

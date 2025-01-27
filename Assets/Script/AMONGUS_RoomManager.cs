@@ -1,17 +1,18 @@
 using UnityEngine;
 using Mirror;
+using System.Collections.Generic;
 
 public class AMONGUS_RoomManager : NetworkRoomManager
 {
     public override void OnRoomServerConnect(NetworkConnectionToClient conn)//서버에서 새로 접속한 클라이언트가 있을 때 동작하는 함수 
     {
         base.OnRoomServerConnect(conn);
+        
+        //var spawnPosition = SpawnPositions.instance.GetSpawnPosition();
 
-        var spawnPosition = SpawnPositions.instance.GetSpawnPosition();
+        //var playerObject = Instantiate(spawnPrefabs[0], spawnPosition, Quaternion.identity); //spawnPrefabs -> 미리 등록해 놓은 네트워크 프리팹 리스트. 
 
-        var playerObject = Instantiate(spawnPrefabs[0], spawnPosition, Quaternion.identity); //spawnPrefabs -> 미리 등록해 놓은 네트워크 프리팹 리스트. 
-
-        NetworkServer.Spawn(playerObject, conn);
+        //NetworkServer.Spawn(playerObject, conn);
 
         //var networkIdentity = playerObject.GetComponent<NetworkIdentity>();
 

@@ -63,7 +63,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 46b4096a0f0a6a14e9562c35cb276afc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,6 +200,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   _isMoving: 0
+  ColorType: 0
 --- !u!50 &3460750423640032727
 Rigidbody2D:
   serializedVersion: 5
