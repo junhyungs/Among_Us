@@ -72,10 +72,12 @@ public class CustomizeUI : MonoBehaviour
     {
         if (_colorSelectButtonComponents[index]._isInteractable)
         {
-            AMONGUS_RoomPlayer.MyRoomPlayer.CommandSetPlayerColor((PlayerColorType)index);
+            AMONGUS_User.Instance.MyRoomPlayer.CommandSetPlayerColor((PlayerColorType)index);
+            AMONGUS_User.Instance.MyRoomPlayer.CharacterMove.CommandSetPlayerColor((PlayerColorType)index);
             UpdatePreviewColor((PlayerColorType)index);
         }
     }
+
 
     public void OpenCustomizeUI()
     {
@@ -91,10 +93,6 @@ public class CustomizeUI : MonoBehaviour
 
     private void SetMyCharacterIsMoving(bool isMoving)
     {
-        var myRoomPlayer = AMONGUS_RoomPlayer.MyRoomPlayer;
-
-        var characterMoveComponent = myRoomPlayer._characterMove;
-
-        characterMoveComponent.IsMoving = isMoving;
+        AMONGUS_User.Instance.MyRoomPlayer.CharacterMove.IsMoving = isMoving;
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mirror;
+using System.Collections;
 
 public class CharacterMove : NetworkBehaviour
 {
@@ -20,34 +21,44 @@ public class CharacterMove : NetworkBehaviour
             _isMoving = value;
         }
     }
+
     [SyncVar]
     private float _moveSpeed = 2f;
 
-    private SpriteRenderer _spriteRenderer;
+    [SyncVar(hook = nameof(PlayerColor_Hook))]
+    public PlayerColorType CurrentPlayerColor;
 
-    [SyncVar(hook = nameof(SetPlayerColor_Hook))]
-    public PlayerColorType ColorType;
-
-    public void SetPlayerColor_Hook(PlayerColorType previousColor, PlayerColorType newColor)
+    public void PlayerColor_Hook(PlayerColorType _, PlayerColorType newColor)
     {
-        if(_spriteRenderer == null)
+        if(_characterSpriteRenderer == null)
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _characterSpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        _spriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(newColor));
+        _characterSpriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(newColor));
+    }
+
+    [Command]
+    public void CommandSetPlayerColor(PlayerColorType newColor)
+    {
+        CurrentPlayerColor = newColor;
     }
 
     private void Awake()
     {
-        _characterSpriteRenderer = GetComponent<SpriteRenderer>();
+        if(_characterSpriteRenderer == null)
+        {
+            _characterSpriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        
         _animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(ColorType));
+        var material = Instantiate(_characterSpriteRenderer.material);
+        _characterSpriteRenderer.material = material;
+        _characterSpriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(CurrentPlayerColor));
 
         if (isOwned)
         {
@@ -88,20 +99,8 @@ public class CharacterMove : NetworkBehaviour
             }
 
             _animator.SetBool("isMove", isMove);
-            //CommandAnimationMovement(isMove);
+     
         }
-    }
-
-    [Command]
-    private void CommandAnimationMovement(bool isMove) //최적화를 위해서는 커맨드 호출보다는 NetworkAnimator 컴포넌트 사용하는게 더 좋음.
-    {
-        ClientRPCAnimationMovement(isMove);
-    }
-
-    [ClientRpc]
-    private void ClientRPCAnimationMovement(bool isMove)
-    {
-        _animator.SetBool("isMove", isMove);
     }
 
     [Command]

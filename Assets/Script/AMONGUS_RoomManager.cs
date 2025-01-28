@@ -1,13 +1,12 @@
-using UnityEngine;
 using Mirror;
-using System.Collections.Generic;
+using UnityEngine;
 
 public class AMONGUS_RoomManager : NetworkRoomManager
-{
+{ 
     public override void OnRoomServerConnect(NetworkConnectionToClient conn)//서버에서 새로 접속한 클라이언트가 있을 때 동작하는 함수 
     {
         base.OnRoomServerConnect(conn);
-        
+ 
         //var spawnPosition = SpawnPositions.instance.GetSpawnPosition();
 
         //var playerObject = Instantiate(spawnPrefabs[0], spawnPosition, Quaternion.identity); //spawnPrefabs -> 미리 등록해 놓은 네트워크 프리팹 리스트. 
@@ -32,4 +31,11 @@ public class AMONGUS_RoomManager : NetworkRoomManager
         //클라이언트에 전송 -> 연결된 클라이언트에게 생성된 오브젝트의 정보를 전송해 클라이언트가 해당 오브젝트를 렌더링 할 수 있도록 함.
         //권한 설정 -> 특정 클라이언트에게 오브젝트의 소유권(권한)을 부여할 수 있음.
     }
+    //public override void OnRoomServerDisconnect(NetworkConnectionToClient conn)
+    //{
+    //    base.OnRoomServerDisconnect(conn);
+        
+    //    AMONGUS_User.Instance.RemoveUser(conn.connectionId);
+    //}
+
 }
