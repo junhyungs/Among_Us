@@ -3,6 +3,9 @@ using Mirror;
 
 public class AMONGUS_RoomPlayer : NetworkRoomPlayer
 {
+    public readonly SyncHashSet<NetworkRoomPlayer> _syncSet = new SyncHashSet<NetworkRoomPlayer>();
+
+    //Hook 매개변수 -> 미러가 자동으로 채워줌. 첫 번째 매개변수는 변경 전값, 두 번째 매개변수는 변경된 값을 나타냄.
     [SyncVar(hook = nameof(PlayerColor_Hook))] //Hook -> 매개변수 타입도 일치해야함. 이전 , 변경 순서. 
     public PlayerColorType CurrentPlayerColor;
     private void PlayerColor_Hook(PlayerColorType previousColor, PlayerColorType newColor)
@@ -11,6 +14,7 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
     }
 
     public CharacterMove CharacterMove { get; set; }
+    public static AMONGUS_RoomPlayer MyPlayer { get; set; }
 
     //[System.Obsolete] 어트리뷰트는 메서드나 클래스가 더 이상 사용되지 않음을 알려주는 경고/오류 시스템을 제공
     //public static AMONGUS_RoomPlayer MyRoomPlayer { get; set; }
@@ -101,11 +105,31 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
         lobbyCharacterMoveComponent.CurrentPlayerColor = playerColorType;
     }
 
+    //NetworkServer -> 서버에서 네트워크 동작을 제어하는 역할을 함.
+    //서버측에서 오브젝트 생성, 동기화, 메시지 처리등을 다룸.
+    //오브젝트 동기화 = 서버에서 생성된 오브젝트를 클라이언트와 동기화함. 모든 연결된 클라이언트가 동일한 오브젝트를 인식할 수 있도록 보장.
+    //클라이언트 관리 = 클라이언트 연결 및 해제 처리. 클라이언트가 서버의 특정 오브젝트를 소유(권한부여)할 수 있도록 설정.
+    //데이터 전송 = 클라이언트와 데이터를 주고받기 위한 메시지를 처리.
+
+    //NetworkServer.Spawn(게임 오브젝트. NetworkConnection) 
+    //네트워크 오브젝트를 생성하고, 이를 서버와 클라이언트 간에 동기화하는 역할을 하는 함수.
+    //오브젝트 등록 -> 서버에서 생성된 오브젝트를 네트워크에 등록.
+    //클라이언트에 전송 -> 연결된 클라이언트에게 생성된 오브젝트의 정보를 전송해 클라이언트가 해당 오브젝트를 렌더링 할 수 있도록 함.
+    //권한 설정 -> 특정 클라이언트에게 오브젝트의 소유권(권한)을 부여할 수 있음.
+
+    public void RequestCommanSetPlayerColor(PlayerColorType playerColorType)
+    {
+        if (!isOwned) //지금 이 객체에 권한은 있지만, 권한 검사를 하지 않고 커맨드를 호출할 경우 경고 발생할 수 있음.
+        {
+            return;
+        }
+
+        CommandSetPlayerColor(playerColorType);
+    }
+
     [Command]
-    public void CommandSetPlayerColor(PlayerColorType playerColorType)
+    private void CommandSetPlayerColor(PlayerColorType playerColorType)
     {
         CurrentPlayerColor = playerColorType;
     }
-
-
 }

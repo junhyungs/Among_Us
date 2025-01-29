@@ -38,11 +38,7 @@ public class CharacterMove : NetworkBehaviour
         _characterSpriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(newColor));
     }
 
-    [Command]
-    public void CommandSetPlayerColor(PlayerColorType newColor)
-    {
-        CurrentPlayerColor = newColor;
-    }
+    
 
     private void Awake()
     {
@@ -103,6 +99,7 @@ public class CharacterMove : NetworkBehaviour
         }
     }
 
+    #region Command&RPC
     [Command]
     private void CommandFlipXAndMovement(Vector3 moveDirection)
     {
@@ -121,4 +118,22 @@ public class CharacterMove : NetworkBehaviour
             _characterSpriteRenderer.flipX = false;
         }
     }
+
+    public void RequestCommandSetPlayerColor(PlayerColorType colorType)
+    {
+        if (!isOwned)
+        {
+            return;
+        }
+
+        CommandSetPlayerColor(colorType);
+    }
+
+    [Command]
+    private void CommandSetPlayerColor(PlayerColorType colorType)
+    {
+        CurrentPlayerColor = colorType;
+    }
+
+    #endregion
 }

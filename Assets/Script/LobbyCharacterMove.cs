@@ -5,29 +5,6 @@ using System.Linq;
 
 public class LobbyCharacterMove : CharacterMove
 {
-    //Hook 매개변수 -> 미러가 자동으로 채워줌. 첫 번째 매개변수는 변경 전값, 두 번째 매개변수는 변경된 값을 나타냄.
-    [SyncVar(hook = nameof(SetOwnerNetId_Hook))]
-    public uint _ownerNetId;
-
-    private void SetOwnerNetId_Hook(uint _, uint newOwnerId)
-    {
-        var roomManager = (NetworkManager.singleton as AMONGUS_RoomManager);
-
-        foreach(var networkRoomPlayer in roomManager.roomSlots)
-        {
-            if(connectionToClient == networkRoomPlayer.connectionToClient)
-            {
-                var amongusRoomPlayer = networkRoomPlayer as AMONGUS_RoomPlayer;
-
-                AMONGUS_User.Instance.MyRoomPlayer = amongusRoomPlayer;
-
-                amongusRoomPlayer.CharacterMove = this;
-
-                break;
-            }
-        }
-    }
-
     [Server]
     public void SetMyRoomPlayer()
     {
@@ -41,11 +18,16 @@ public class LobbyCharacterMove : CharacterMove
     {
         foreach (var networkRoomPlayer in roomPlayerList)
         {
-            if (connectionToClient == networkRoomPlayer.connectionToClient)
+            if (networkRoomPlayer.isOwned)
             {
+                //connectionToClient == networkRoomPlayer.connectionToClient 조건은
+                //네트워크 연결을 기준으로 현재 클라이언트가 어떤 networkRoomPlayer에 연결되었는지를
+                //나타낸다. 네트워크 연결을 기준으로 하기 때문에 동기화가 완전히 완료되지 않았다면
+                //잘못된 결과를 초래할 수 있다. 
+                //반면 isOwned는 소유권을 나타내기 때문에 더 안전한 방법이다.
                 var amongusRoomPlayer = networkRoomPlayer as AMONGUS_RoomPlayer;
-
-                AMONGUS_User.Instance.MyRoomPlayer = amongusRoomPlayer;
+                
+                AMONGUS_RoomPlayer.MyPlayer = amongusRoomPlayer;
 
                 amongusRoomPlayer.CharacterMove = this;
 

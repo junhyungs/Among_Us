@@ -1,4 +1,5 @@
 using Mirror;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class CustomizeUI : MonoBehaviour
     [SerializeField] private Image _characterPreviewImage;
     [SerializeField] private ColorSelectButton[] _colorSelectButtonComponents;
 
-    private void Start()
+    private void Awake()
     {
         SetCharacterPreviewImageMaterial();
     }
@@ -47,7 +48,19 @@ public class CustomizeUI : MonoBehaviour
             _colorSelectButtonComponents[i].SetInteractable(true);
         }
 
-        if(NetworkManager.singleton is AMONGUS_RoomManager roomManager)
+        //Debug.Log(AMONGUS_User.Instance.SyncHashSet);
+
+        //var syncSet = AMONGUS_User.Instance.SyncHashSet;
+
+        //foreach (var roomPlayer in syncSet)
+        //{
+        //    if(roomPlayer != null)
+        //    {
+        //        _colorSelectButtonComponents[(int)roomPlayer.CurrentPlayerColor].SetInteractable(false);
+        //    }
+        //}
+
+        if (NetworkManager.singleton is AMONGUS_RoomManager roomManager)
         {
             var roomSlots = roomManager.roomSlots;
 
@@ -55,7 +68,7 @@ public class CustomizeUI : MonoBehaviour
             {
                 var amongusroomplayer = networkroomplayer as AMONGUS_RoomPlayer;
 
-                if(amongusroomplayer != null)
+                if (amongusroomplayer != null)
                 {
                     _colorSelectButtonComponents[(int)amongusroomplayer.CurrentPlayerColor].SetInteractable(false);
                 }
@@ -72,10 +85,17 @@ public class CustomizeUI : MonoBehaviour
     {
         if (_colorSelectButtonComponents[index]._isInteractable)
         {
-            AMONGUS_User.Instance.MyRoomPlayer.CommandSetPlayerColor((PlayerColorType)index);
-            AMONGUS_User.Instance.MyRoomPlayer.CharacterMove.CommandSetPlayerColor((PlayerColorType)index);
+            RequestCommandMessage(index);
+
             UpdatePreviewColor((PlayerColorType)index);
         }
+    }
+
+    private void RequestCommandMessage(int index)
+    {
+        AMONGUS_RoomPlayer.MyPlayer.RequestCommanSetPlayerColor((PlayerColorType)index);
+
+        AMONGUS_RoomPlayer.MyPlayer.CharacterMove.RequestCommandSetPlayerColor((PlayerColorType)index);
     }
 
 
@@ -93,6 +113,8 @@ public class CustomizeUI : MonoBehaviour
 
     private void SetMyCharacterIsMoving(bool isMoving)
     {
-        AMONGUS_User.Instance.MyRoomPlayer.CharacterMove.IsMoving = isMoving;
+        var characterMove = AMONGUS_RoomPlayer.MyPlayer.CharacterMove;
+
+        characterMove.IsMoving = isMoving;
     }
 }
