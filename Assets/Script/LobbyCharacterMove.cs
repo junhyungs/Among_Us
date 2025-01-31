@@ -36,7 +36,6 @@ public class LobbyCharacterMove : CharacterMove
         }
     }
 
-
     #region CommandAndTargetRPC
     //[Command]
     //public void FindMyRoomPlayer(NetworkIdentity identity)

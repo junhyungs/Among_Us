@@ -29,8 +29,6 @@ public class AMONGUS_RoomManager : NetworkRoomManager
     public override void OnRoomServerConnect(NetworkConnectionToClient conn)//서버에서 새로 접속한 클라이언트가 있을 때 동작하는 함수 
     {
         base.OnRoomServerConnect(conn);
-
-        StartCoroutine(AddNetworkRoomPlayer(conn));
     }
 
     [Server]
@@ -47,10 +45,31 @@ public class AMONGUS_RoomManager : NetworkRoomManager
     public override void OnRoomServerDisconnect(NetworkConnectionToClient conn)
     {
         base.OnRoomServerDisconnect(conn);
+    }
 
-        if(conn.identity.TryGetComponent(out AMONGUS_RoomPlayer player))
+    [Server]
+    private void RemoveNetworkRoomPlayer(NetworkConnectionToClient conn)
+    {
+        if (conn.identity.TryGetComponent(out AMONGUS_RoomPlayer player))
         {
             AMONGUS_User.Instance.RemoveRoomPlayer(player);
         }
     }
+
+    //public override void OnServerDisconnect(NetworkConnectionToClient conn)
+    //{
+    //    var identity = conn.identity;
+
+    //    if(identity != null)
+    //    {
+    //        AMONGUS_RoomPlayer amongusRoomPlayer = identity.GetComponent<AMONGUS_RoomPlayer>(); 
+
+    //        NetworkServer.SendToAll()
+    //    }
+
+
+    //    base.OnServerDisconnect(conn);
+    //}
+
+
 }

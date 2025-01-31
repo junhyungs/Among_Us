@@ -30,16 +30,24 @@ public class CharacterMove : NetworkBehaviour
 
     public void PlayerColor_Hook(PlayerColorType _, PlayerColorType newColor)
     {
+        if(_ == newColor)
+        {
+            return;
+        }
+
         if(_characterSpriteRenderer == null)
         {
             _characterSpriteRenderer = GetComponent<SpriteRenderer>();
         }
-
+        
         _characterSpriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(newColor));
     }
-
+    //SyncVar는 서버에서 값이 변경되면 모든 클라에게 동기화를 해줌. 
+    //그 과정에서 SyncVar에 등록된 Hook이 호출되고, 다른 클라의 Hook도 호출된다. 
+    //다른 클라들은 서버에서 받은 값을 동기화하고 자신의 권한으로 Hook을 호출하지만,
+    //변경을 요청한 클라이언트의 값이 변경된거지 다른 클라의 값이 변경된건 아니기 때문에
+    //다른 클라들은 매개변수로 둘 다 같은 값을 받게되고, hook은 호출되지만 결과적으로 색은 변경되지 않는다.
     
-
     private void Awake()
     {
         if(_characterSpriteRenderer == null)
@@ -107,7 +115,7 @@ public class CharacterMove : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void ClientRPCFlipXAndMovement(Vector3 moveDirection)
+    public void ClientRPCFlipXAndMovement(Vector3 moveDirection)
     {
         if (moveDirection.x < 0f)
         {

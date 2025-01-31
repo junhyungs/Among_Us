@@ -770,16 +770,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 808605002}
-  - {fileID: 1477135971}
   - {fileID: 170799980}
+  - {fileID: 1477135971}
+  - {fileID: 808605002}
+  - {fileID: 1090694792}
+  - {fileID: 1305485837}
   - {fileID: 1894683777}
   - {fileID: 1271611452}
   - {fileID: 527021000}
   - {fileID: 1399143398}
   - {fileID: 222743298}
-  - {fileID: 1090694792}
-  - {fileID: 1305485837}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &229796824
@@ -795,16 +795,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawnPostions:
-  - {fileID: 808605002}
-  - {fileID: 1477135971}
   - {fileID: 170799980}
+  - {fileID: 1477135971}
+  - {fileID: 808605002}
+  - {fileID: 1090694792}
+  - {fileID: 1305485837}
   - {fileID: 1894683777}
   - {fileID: 1271611452}
   - {fileID: 527021000}
   - {fileID: 1399143398}
   - {fileID: 222743298}
-  - {fileID: 1090694792}
-  - {fileID: 1305485837}
 --- !u!1 &245640215
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,32 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
         }
     }
 
+    private void OnDestroy()
+    {
+        if (isServer)
+        {
+            Debug.Log("서버");
+            
+        }
+
+        if (isClient)
+        {
+            Debug.Log("클라");
+
+            if (LobbyUIManager.Instance != null)
+            {
+                LobbyUIManager.Instance.CustomizeUI.OnStopClientColorButton(CurrentPlayerColor);
+                //개인 인스턴스로 실행한 것 같지만 모든 클라에게 적용되는 이유.
+                //이 객체의 파괴 이벤트 메서드를 실행시킨 곳은 Server임. 네트워크 객체가 파괴되면 서버는 이 정보를 모든 클라에게 <전파>하고
+                //모든 클라에서 파괴된 객체의 OnDestroy를 실행하게 됨. 이건 네트워크 객체가 파괴되며 발생하는 특수한 경우임.
+                //클라에서 실행하는건 어떻게 보면 당연한거 자신의 로컬에서 객체를 삭제시켜야 하기 때문.
+
+                //서버에서 객체 파괴 -> 클라에게 파괴 정보 전달 -> 모든 클라의 OnDestroy 실행.
+                //ClientRpc와 흡사함.
+            }
+        }
+    }
+
     //public override void OnStartClient()
     //{
     //    if (isClient)
@@ -93,14 +119,17 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
 
         CurrentPlayerColor = playerColorType;
 
+        var index = SpawnPositions.instance.Index;
         var spawnPosition = SpawnPositions.instance.GetSpawnPosition();
-
+        
         var playerObject = Instantiate(AMONGUS_RoomManager.singleton.spawnPrefabs[0], spawnPosition, Quaternion.identity); //spawnPrefabs -> 미리 등록해 놓은 네트워크 프리팹 리스트. 
 
         var lobbyCharacterMoveComponent = playerObject.GetComponent<LobbyCharacterMove>();
 
         NetworkServer.Spawn(playerObject, connectionToClient);
 
+        Vector3 spawnDirection = index < 5 ? new Vector3(1f, 0f, 0f) : new Vector3(-1f, 0f, 0f);
+        lobbyCharacterMoveComponent.ClientRPCFlipXAndMovement(spawnDirection);
         lobbyCharacterMoveComponent.SetMyRoomPlayer();
         lobbyCharacterMoveComponent.CurrentPlayerColor = playerColorType;
     }

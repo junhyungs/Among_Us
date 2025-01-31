@@ -48,18 +48,6 @@ public class CustomizeUI : MonoBehaviour
             _colorSelectButtonComponents[i].SetInteractable(true);
         }
 
-        //Debug.Log(AMONGUS_User.Instance.SyncHashSet);
-
-        //var syncSet = AMONGUS_User.Instance.SyncHashSet;
-
-        //foreach (var roomPlayer in syncSet)
-        //{
-        //    if(roomPlayer != null)
-        //    {
-        //        _colorSelectButtonComponents[(int)roomPlayer.CurrentPlayerColor].SetInteractable(false);
-        //    }
-        //}
-
         if (NetworkManager.singleton is AMONGUS_RoomManager roomManager)
         {
             var roomSlots = roomManager.roomSlots;
@@ -74,6 +62,11 @@ public class CustomizeUI : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnStopClientColorButton(PlayerColorType playerColorType)
+    {
+        _colorSelectButtonComponents[(int)playerColorType].SetInteractable(true);
     }
 
     public void UpdatePreviewColor(PlayerColorType playerColorType)
