@@ -247,7 +247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &26298210
 RectTransform:
   m_ObjectHideFlags: 0
@@ -281,6 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0631802ed8487449906ec920969dfbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colorButton: {fileID: 2123879133}
+  _colorPanelObject: {fileID: 2041550552}
+  _gameRuleButton: {fileID: 2087865456}
+  _gameRulePanelObject: {fileID: 950331499}
   _characterPreviewImage: {fileID: 177147446}
   _colorSelectButtonComponents:
   - {fileID: 1501448566}
@@ -541,9 +545,9 @@ RectTransform:
   - {fileID: 1073274502}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -263}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &38174103
@@ -641,7 +645,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 51822097}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeCrewSight
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &51822097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +913,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -918,7 +934,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 74440144}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeEmergencyMeetings
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &74440144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,7 +1067,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 87802205}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeKillCoolDown
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &87802205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,7 +1638,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 140963787}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeTaskBarUpdates
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &140963787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1743,6 +1795,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177147444}
   m_CullTransparentMesh: 1
+--- !u!1 &195767314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 195767315}
+  - component: {fileID: 195767316}
+  - component: {fileID: 195767317}
+  m_Layer: 0
+  m_Name: GameRuleStore
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &195767315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195767314}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &195767316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195767314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc209f53cb9b7047a7e6444fea55eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  _isRecommandRuleToggle: {fileID: 205804438}
+  _confirmEjectsToggle: {fileID: 1841577383}
+  _emergencyMeetingsText: {fileID: 541150689}
+  _emergencyMetingsCoolDownText: {fileID: 1272973973}
+  _meetingTimeText: {fileID: 1247736758}
+  _voteTimeText: {fileID: 331119306}
+  _anonymousVotesToggle: {fileID: 1719844635}
+  _moveSpeedText: {fileID: 1254656960}
+  _crewSightText: {fileID: 489810177}
+  _imposterSightText: {fileID: 1853295548}
+  _killCoolDownText: {fileID: 302780522}
+  _killRangeText: {fileID: 1382959524}
+  _visualTasksToggle: {fileID: 2025536730}
+  _taskBarUpdatesText: {fileID: 1960091867}
+  _commomTaskText: {fileID: 1096267873}
+  _complexTaskText: {fileID: 517200762}
+  _simpleTaskText: {fileID: 1017888428}
+  _gameRuleOverviewText: {fileID: 1039514725}
+--- !u!114 &195767317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195767314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 250266973
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &205804436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,7 +1908,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 688580339}
-  - {fileID: 867119811}
   m_Father: {fileID: 315217173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1794,7 +1928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1805,7 +1939,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1827,7 +1961,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnRecommandRuleToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &211569591
 GameObject:
@@ -1990,7 +2136,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 220414338}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeComplexTask
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &220414338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,9 +2253,9 @@ RectTransform:
   m_Father: {fileID: 339226944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: 3, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &224178572
 MonoBehaviour:
@@ -2286,9 +2444,9 @@ RectTransform:
   - {fileID: 1168097880}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -871}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &236065014
@@ -2725,7 +2883,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 278314225}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeCommomTask
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &278314225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3023,7 +3193,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1602257207}
   - {fileID: 205804437}
   m_Father: {fileID: 938662900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3867,7 +4036,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 899786854}
   - {fileID: 1841577382}
   m_Father: {fileID: 1194313483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3986,9 +4154,9 @@ RectTransform:
   - {fileID: 1001577838}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -339}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &471968780
@@ -4311,9 +4479,9 @@ RectTransform:
   - {fileID: 1658190008}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -567}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &510352954
@@ -4523,7 +4691,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 538321111}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeImposterSight
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &538321111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4879,7 +5059,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 551832193}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeTaskBarUpdates
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &551832193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5446,9 +5638,9 @@ RectTransform:
   - {fileID: 1723054695}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -187}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &583414300
@@ -5916,9 +6108,9 @@ RectTransform:
   m_Father: {fileID: 339226944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 3, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &673025226
 MonoBehaviour:
@@ -5927,7 +6119,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 673025224}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
@@ -6416,9 +6608,9 @@ RectTransform:
   - {fileID: 2008142231}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -795}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &744226605
@@ -6948,9 +7140,9 @@ RectTransform:
   - {fileID: 2012941890}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -491}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794380011
@@ -7027,7 +7219,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -7048,7 +7240,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 807552813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeEmergencyMeetingsCoolDown
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &807552813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7200,7 +7404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 817124829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeKillCoolDown
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &817124829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7300,7 +7516,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -7321,7 +7537,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 836946630}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeMeetingTime
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &836946630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7543,9 +7771,9 @@ RectTransform:
   - {fileID: 14280145}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -643}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853113751
@@ -7752,12 +7980,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205804437}
+  m_Father: {fileID: 938662900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 9, y: -0.4999962}
-  m_SizeDelta: {x: -28, y: -3}
+  m_SizeDelta: {x: -46.200012, y: -18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &867119812
 MonoBehaviour:
@@ -7883,7 +8111,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 891363080}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeKillRange
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &891363080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8123,12 +8363,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 452275946}
+  m_Father: {fileID: 1194313483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 318.2, y: -30}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899786855
 MonoBehaviour:
@@ -8798,12 +9038,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1602257207}
+  - {fileID: 867119811}
   - {fileID: 315217173}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -35}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &938662901
@@ -8909,7 +9151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &950331500
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9433,7 +9675,7 @@ GameObject:
   - component: {fileID: 1039514726}
   - component: {fileID: 1039514725}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: GameOverviewText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9455,8 +9697,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 297, y: -127}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: 960, y: -540}
+  m_SizeDelta: {x: 1800, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039514725
 MonoBehaviour:
@@ -9485,7 +9727,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 55
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -9662,7 +9904,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1062321269}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeCrewSight
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1062321269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10373,7 +10627,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1129898771}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeSimpleTask
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1129898771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10494,7 +10760,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1145508016}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeMoveSpeed
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1145508016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10568,9 +10846,9 @@ RectTransform:
   - {fileID: 1186470098}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -1023}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150098884
@@ -10790,12 +11068,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 899786854}
+  - {fileID: 1599865005}
   - {fileID: 452275946}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -111}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1194313484
@@ -10893,7 +11173,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1195865637}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeVoteTime
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1195865637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11068,7 +11360,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -11089,7 +11381,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1222305085}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeEmergencyMeetings
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1222305085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11242,9 +11546,9 @@ RectTransform:
   - {fileID: 1529052461}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -719}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243801118
@@ -12029,9 +12333,9 @@ RectTransform:
   - {fileID: 1082738079}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -1175}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294968065
@@ -12668,7 +12972,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1327364875}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeMoveSpeed
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1327364875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12742,9 +13058,9 @@ RectTransform:
   - {fileID: 1968650470}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -1099}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1350798191
@@ -12900,7 +13216,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -12921,7 +13237,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1379792859}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeEmergencyMeetingsCoolDown
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1379792859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13090,7 +13418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1399519097
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13098,7 +13426,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399519096}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13115,11 +13443,11 @@ RectTransform:
   - {fileID: 1730301000}
   - {fileID: 263040990}
   - {fileID: 600608242}
-  m_Father: {fileID: 1695733312}
+  m_Father: {fileID: 2041550553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: -32}
+  m_AnchoredPosition: {x: 240, y: 0}
   m_SizeDelta: {x: 204.9402, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1399519098
@@ -13389,7 +13717,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -13410,7 +13738,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1428026765}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeMeetingTime
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1428026765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14250,7 +14590,7 @@ RectTransform:
   m_Father: {fileID: 72817094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.99999994, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14396,16 +14736,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599865004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1841577382}
+  m_Father: {fileID: 1194313483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 9.099976, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1599865006
@@ -14482,12 +14822,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 315217173}
+  m_Father: {fileID: 938662900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 318.2, y: -30}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602257208
 MonoBehaviour:
@@ -14688,7 +15028,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1606042149}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeComplexTask
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1606042149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14858,7 +15210,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1286}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1627595055
 MonoBehaviour:
@@ -15095,7 +15447,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1654451295}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeCommomTask
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1654451295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15203,9 +15567,9 @@ RectTransform:
   - {fileID: 253799731}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -947}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659917977
@@ -15488,7 +15852,6 @@ RectTransform:
   - {fileID: 2123879132}
   - {fileID: 2087865455}
   - {fileID: 2041550553}
-  - {fileID: 1399519097}
   - {fileID: 950331500}
   m_Father: {fileID: 26298210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15969,9 +16332,9 @@ RectTransform:
   - {fileID: 117123425}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -415}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1710260765
@@ -16049,7 +16412,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -16071,7 +16434,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeAnonymousVotes
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1723054694
 GameObject:
@@ -16145,9 +16520,9 @@ RectTransform:
   - {fileID: 1647581856}
   m_Father: {fileID: 1627595054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 216.895, y: -1251}
   m_SizeDelta: {x: 418.2, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1727014316
@@ -16989,7 +17364,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 913141073}
-  - {fileID: 1599865005}
   m_Father: {fileID: 452275946}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -17021,7 +17395,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -17043,7 +17417,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeConfirmEjectsToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1853295546
 GameObject:
@@ -18522,7 +18908,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2016635770}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeVoteTime
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2016635770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18623,7 +19021,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -18645,7 +19043,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeVisualTasks
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &2041550552
 GameObject:
@@ -18678,6 +19088,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 177147445}
+  - {fileID: 1399519097}
   m_Father: {fileID: 1695733312}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18884,7 +19295,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2054409697}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeSimpleTask
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2054409697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18958,9 +19381,9 @@ RectTransform:
   m_Father: {fileID: 339226944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2057486912
 MonoBehaviour:
@@ -19131,7 +19554,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2064841916}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeImposterSight
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2064841916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19228,7 +19663,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -19252,7 +19687,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2087865457}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 26298211}
+        m_TargetAssemblyTypeName: CustomizeUI, Assembly-CSharp
+        m_MethodName: ActiveGameRulePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2087865457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19323,8 +19770,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 588600048}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.7881026}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19527,7 +19974,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2091314207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 195767316}
+        m_TargetAssemblyTypeName: GameRuleStore, Assembly-CSharp
+        m_MethodName: OnChangeKillRange
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2091314207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19990,7 +20449,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -20014,7 +20473,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2123879134}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 26298211}
+        m_TargetAssemblyTypeName: CustomizeUI, Assembly-CSharp
+        m_MethodName: ActiveColorPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2123879134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20213,3 +20684,4 @@ SceneRoots:
   - {fileID: 229796823}
   - {fileID: 762503471}
   - {fileID: 1409755375}
+  - {fileID: 195767315}
