@@ -11473,7 +11473,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  _playerCountText: {fileID: 0}
+  _playerCountText: {fileID: 1120551514}
 --- !u!114 &1194105650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16330,7 +16330,7 @@ MonoBehaviour:
   _customizeUI: {fileID: 26298211}
   _useButton: {fileID: 64557357}
   _originSprite: {fileID: 21300000, guid: 1abf9d0ad96ed484ab3f289f79f9404d, type: 3}
-  _gameRoomPlayerCount: {fileID: 0}
+  _gameRoomPlayerCount: {fileID: 1194105649}
 --- !u!1 &1689903893
 GameObject:
   m_ObjectHideFlags: 0

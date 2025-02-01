@@ -13,6 +13,9 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
         LobbyUIManager.Instance.CustomizeUI.UpdateColorButton();
     }
 
+    [SyncVar]
+    private string _nickName;
+
     public CharacterMove CharacterMove { get; set; }
     public static AMONGUS_RoomPlayer MyPlayer { get; set; }
 
@@ -26,6 +29,11 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
         if (isServer)
         {
             SpawnLobbyCharacter();
+        }
+
+        if (isLocalPlayer)
+        {
+            CommandSetPlayerNickName(PlayerSettings._nickName);
         }
 
         if (isClient)
@@ -63,6 +71,13 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
                 gameRoomPlayerCount_Component.OnUpdatePlayerCountText();
             }
         }
+    }
+
+    [Command]
+    private void CommandSetPlayerNickName(string nickName)
+    {
+        _nickName = nickName;
+        CharacterMove._playerName = nickName;
     }
 
     //public override void OnStartClient()

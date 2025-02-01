@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using System.Collections;
 
 public class GameRoomPlayerCount : NetworkBehaviour
 {

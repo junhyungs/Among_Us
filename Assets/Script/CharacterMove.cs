@@ -1,6 +1,7 @@
 using UnityEngine;
 using Mirror;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CharacterMove : NetworkBehaviour
 {
@@ -27,7 +28,6 @@ public class CharacterMove : NetworkBehaviour
 
     [SyncVar(hook = nameof(PlayerColor_Hook))]
     public PlayerColorType CurrentPlayerColor;
-
     public void PlayerColor_Hook(PlayerColorType _, PlayerColorType newColor)
     {
         if(_ == newColor)
@@ -47,7 +47,17 @@ public class CharacterMove : NetworkBehaviour
     //다른 클라들은 서버에서 받은 값을 동기화하고 자신의 권한으로 Hook을 호출하지만,
     //변경을 요청한 클라이언트의 값이 변경된거지 다른 클라의 값이 변경된건 아니기 때문에
     //다른 클라들은 매개변수로 둘 다 같은 값을 받게되고, hook은 호출되지만 결과적으로 색은 변경되지 않는다.
-    
+
+    [SerializeField]
+    private Text _nameText;
+
+    [SyncVar(hook = nameof(Hook_SetPlayerName))]
+    public string _playerName;
+    public void Hook_SetPlayerName(string _, string newName)
+    {
+        _nameText.text = newName;   
+    }
+
     private void Awake()
     {
         if(_characterSpriteRenderer == null)
@@ -88,6 +98,7 @@ public class CharacterMove : NetworkBehaviour
             {
                 Vector3 moveDirection = Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f), 1f);
                 CommandFlipXAndMovement(moveDirection);
+                RotateNameText(moveDirection);
                 transform.position += moveDirection * _moveSpeed * Time.deltaTime;
                 isMove = moveDirection.magnitude != 0f;
             }
@@ -97,6 +108,7 @@ public class CharacterMove : NetworkBehaviour
                 {
                     Vector3 moveDirection = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
                     CommandFlipXAndMovement(moveDirection);
+                    RotateNameText(moveDirection);
                     transform.position += moveDirection * _moveSpeed * Time.deltaTime;
                     isMove = moveDirection.magnitude != 0f;
                 }
@@ -107,7 +119,26 @@ public class CharacterMove : NetworkBehaviour
         }
     }
 
+    private void RotateNameText(Vector3 moveDirection)
+    {
+        Quaternion rotation;
+
+        if (moveDirection.x < 0f)
+        {
+            rotation = Quaternion.Euler(0f, 180f, 0f);
+
+            _nameText.transform.rotation = rotation;
+        }
+        else if (moveDirection.x > 0f)
+        {
+            rotation = Quaternion.identity;
+
+            _nameText.transform.rotation = rotation;
+        }
+    }
+
     #region Command&RPC
+
     [Command]
     private void CommandFlipXAndMovement(Vector3 moveDirection)
     {
