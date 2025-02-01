@@ -10654,6 +10654,8 @@ MonoBehaviour:
   GameplayScene: Assets/Scenes/GamePlayScene.unity
   _allPlayersReady: 0
   clientIndex: 0
+  MinPlayerCount: 0
+  ImposterCount: 0
 --- !u!114 &1442043522
 MonoBehaviour:
   m_ObjectHideFlags: 0

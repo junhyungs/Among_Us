@@ -3,7 +3,10 @@ using System.Collections;
 using UnityEngine;
 
 public class AMONGUS_RoomManager : NetworkRoomManager
-{ 
+{
+    public int MinPlayerCount;
+    public int ImposterCount;
+
     public static AMONGUS_RoomManager Instance
     {
         get
