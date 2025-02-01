@@ -16,6 +16,18 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
     [SyncVar]
     private string _nickName;
 
+    public string SyncNickName
+    {
+        get => _nickName;
+        set
+        {
+            if (isServer)
+            {
+                _nickName = value;
+            }
+        }
+    }
+
     public CharacterMove CharacterMove { get; set; }
     public static AMONGUS_RoomPlayer MyPlayer { get; set; }
 
@@ -29,19 +41,13 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
         if (isServer)
         {
             SpawnLobbyCharacter();
+
+            LobbyUIManager.Instance.ActiveStartButton();
         }
 
-        if (isLocalPlayer)
-        {
-            CommandSetPlayerNickName(PlayerSettings._nickName);
-        }
+        var gameRoomPlayerCount_Component = LobbyUIManager.Instance.GameRoomPlayerCount;
 
-        if (isClient)
-        {
-            var gameRoomPlayerCount_Component = LobbyUIManager.Instance.GameRoomPlayerCount;
-
-            gameRoomPlayerCount_Component.OnUpdatePlayerCountText();
-        }
+        gameRoomPlayerCount_Component.OnUpdatePlayerCountText();
     }
 
     private void OnDestroy()
@@ -73,11 +79,9 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
         }
     }
 
-    [Command]
-    private void CommandSetPlayerNickName(string nickName)
+    public void ReadyToBegin()
     {
-        _nickName = nickName;
-        CharacterMove._playerName = nickName;
+        CmdChangeReadyState(true);
     }
 
     //public override void OnStartClient()

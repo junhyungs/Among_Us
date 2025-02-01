@@ -31,9 +31,23 @@ public class LobbyCharacterMove : CharacterMove
 
                 amongusRoomPlayer.CharacterMove = this;
 
+                CommandSetPlayerNickName(PlayerSettings._nickName, amongusRoomPlayer);
+                //Mirror에서 클라 -> 서버로 객체 전송 시 해당 객체의 NetID를 전송하여 서버측에서 동일한 ID를 가진 객체를 찾게된다.
+                //때문에 클라에서 객체를 서버로 보낸다고 해서 서버에서 클라의 객체를 다루는 것이 아님. 
+                //결국 서버 인스턴스로 명령을 수행함. 이를 동기화 받으려면 SyncVar로 받던가 해야함.
+                //지금 이 코드에서는 AMONGUS_RoomPlayer는 NetworkBehaviour를 상속받고 있고, 서버에서 전달해준 
+                //리스트에서 객체를 찾아 전송했기 때문에 당연히 서버에도 동일한 ID를 가진 객체가 있을 것이고, 코드가 동작하게 되는거임.
+
                 break;
             }
         }
+    }
+
+    [Command]
+    private void CommandSetPlayerNickName(string nickName, AMONGUS_RoomPlayer myPlayer)
+    {
+        myPlayer.SyncNickName = nickName;
+        SyncPlayerNickName = nickName;
     }
 
     #region CommandAndTargetRPC

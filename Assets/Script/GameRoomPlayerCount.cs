@@ -52,6 +52,10 @@ public class GameRoomPlayerCount : NetworkBehaviour
         _playerCountText.color = isStartable ? Color.white : Color.red;
 
         _playerCountText.text = string.Format("{0} / {1}", _currentPlayerCount, _maxPlayerCount);
-    }
 
+        if (isServer)
+        {
+            LobbyUIManager.Instance.SetInteractableButton(isStartable);
+        }
+    }
 }

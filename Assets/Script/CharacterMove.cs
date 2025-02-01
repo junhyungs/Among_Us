@@ -52,7 +52,20 @@ public class CharacterMove : NetworkBehaviour
     private Text _nameText;
 
     [SyncVar(hook = nameof(Hook_SetPlayerName))]
-    public string _playerName;
+    private string _playerName;
+
+    public string SyncPlayerNickName
+    {
+        get => _playerName;
+        set
+        {
+            if (isServer)
+            {
+                _playerName = value;
+            }
+        }
+    }
+
     public void Hook_SetPlayerName(string _, string newName)
     {
         _nameText.text = newName;   
@@ -97,8 +110,7 @@ public class CharacterMove : NetworkBehaviour
             if(PlayerSettings._controlType == ControlType.KeyboardMouse)
             {
                 Vector3 moveDirection = Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f), 1f);
-                CommandFlipXAndMovement(moveDirection);
-                RotateNameText(moveDirection);
+                CommandFlipXAndMovement(moveDirection);            
                 transform.position += moveDirection * _moveSpeed * Time.deltaTime;
                 isMove = moveDirection.magnitude != 0f;
             }
@@ -107,33 +119,16 @@ public class CharacterMove : NetworkBehaviour
                 if (Input.GetMouseButton(0))
                 {
                     Vector3 moveDirection = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
-                    CommandFlipXAndMovement(moveDirection);
-                    RotateNameText(moveDirection);
+                    CommandFlipXAndMovement(moveDirection);              
                     transform.position += moveDirection * _moveSpeed * Time.deltaTime;
                     isMove = moveDirection.magnitude != 0f;
                 }
             }
 
+            _nameText.transform.rotation = Quaternion.identity;
+
             _animator.SetBool("isMove", isMove);
      
-        }
-    }
-
-    private void RotateNameText(Vector3 moveDirection)
-    {
-        Quaternion rotation;
-
-        if (moveDirection.x < 0f)
-        {
-            rotation = Quaternion.Euler(0f, 180f, 0f);
-
-            _nameText.transform.rotation = rotation;
-        }
-        else if (moveDirection.x > 0f)
-        {
-            rotation = Quaternion.identity;
-
-            _nameText.transform.rotation = rotation;
         }
     }
 

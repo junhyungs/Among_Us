@@ -33,6 +33,8 @@ public class OnLineUI : MonoBehaviour
     {
         if (!string.IsNullOrWhiteSpace(_nickNameInputField.text))
         {
+            PlayerSettings._nickName = _nickNameInputField.text;
+
             AMONGUS_RoomManager.singleton.StartClient();
         }
         else
