@@ -31,7 +31,22 @@ public class AMONGUS_RoomManager : NetworkRoomManager
 
     public override void OnRoomServerConnect(NetworkConnectionToClient conn)//서버에서 새로 접속한 클라이언트가 있을 때 동작하는 함수 
     {
-        base.OnRoomServerConnect(conn);
+        OnUpdatePlayerCount();
+    }
+
+    public override void OnRoomServerDisconnect(NetworkConnectionToClient conn)
+    {
+        OnUpdatePlayerCount();
+    }
+
+    [Server]
+    private void OnUpdatePlayerCount()
+    {
+        var connectionsCount = NetworkServer.connections.Count;
+
+        var gameRoomPlayerCount_Component = LobbyUIManager.Instance.GameRoomPlayerCount;
+
+        gameRoomPlayerCount_Component.SyncCurrentPlayerCount = connectionsCount;
     }
 
     [Server]
@@ -45,10 +60,7 @@ public class AMONGUS_RoomManager : NetworkRoomManager
         }
     }
 
-    public override void OnRoomServerDisconnect(NetworkConnectionToClient conn)
-    {
-        base.OnRoomServerDisconnect(conn);
-    }
+    
 
     [Server]
     private void RemoveNetworkRoomPlayer(NetworkConnectionToClient conn)

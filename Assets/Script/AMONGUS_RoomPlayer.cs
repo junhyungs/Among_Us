@@ -27,6 +27,13 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
         {
             SpawnLobbyCharacter();
         }
+
+        if (isClient)
+        {
+            var gameRoomPlayerCount_Component = LobbyUIManager.Instance.GameRoomPlayerCount;
+
+            gameRoomPlayerCount_Component.OnUpdatePlayerCountText();
+        }
     }
 
     private void OnDestroy()
@@ -34,7 +41,6 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
         if (isServer)
         {
             Debug.Log("서버");
-            
         }
 
         if (isClient)
@@ -51,6 +57,10 @@ public class AMONGUS_RoomPlayer : NetworkRoomPlayer
 
                 //서버에서 객체 파괴 -> 클라에게 파괴 정보 전달 -> 모든 클라의 OnDestroy 실행.
                 //ClientRpc와 흡사함.
+
+                var gameRoomPlayerCount_Component = LobbyUIManager.Instance.GameRoomPlayerCount;
+
+                gameRoomPlayerCount_Component.OnUpdatePlayerCountText();
             }
         }
     }

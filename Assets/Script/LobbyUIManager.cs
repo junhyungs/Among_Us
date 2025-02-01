@@ -20,6 +20,11 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField] private Button _useButton;
     [SerializeField] private Sprite _originSprite;
     #endregion
+    
+    #region GameRoomPlayerCount
+    [SerializeField] private GameRoomPlayerCount _gameRoomPlayerCount;
+    public GameRoomPlayerCount GameRoomPlayerCount => _gameRoomPlayerCount;
+    #endregion
 
 
     private void Awake()
