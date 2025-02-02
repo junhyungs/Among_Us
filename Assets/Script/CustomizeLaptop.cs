@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CustomizeLaptop : MonoBehaviour
@@ -28,19 +29,27 @@ public class CustomizeLaptop : MonoBehaviour
     {
         var character = collision.GetComponent<CharacterMove>();
 
-        if (character != null && character.isOwned)
-        {
-            _spriteRenderer.material.SetFloat("_HightLightValue", value);
+        bool isSetHighlightValue = character != null && character.isOwned;
 
-            if(value > 0f)
-            {
-                LobbyUIManager.Instance.SetUseButton(_useButtonSprite, OnClickUse);
-            }
-            else
-            {
-                LobbyUIManager.Instance.UnSetUseButton();
-            }
+        if (!isSetHighlightValue)
+        {
+            return;
         }
+
+        var lobbyUIManager = LobbyUIManager.Instance;
+
+        if(lobbyUIManager == null)
+        {
+            return;
+        }
+
+        _spriteRenderer.material.SetFloat("_HightLightValue", value);
+
+        Action action = (value > 0f) ?
+            () => lobbyUIManager.SetUseButton(_useButtonSprite, OnClickUse) :
+            () => lobbyUIManager.UnSetUseButton();
+
+        action.Invoke();
     }
 
     public void OnClickUse()

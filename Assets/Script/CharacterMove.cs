@@ -71,7 +71,7 @@ public class CharacterMove : NetworkBehaviour
         _nameText.text = newName;   
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if(_characterSpriteRenderer == null)
         {
@@ -81,7 +81,9 @@ public class CharacterMove : NetworkBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    [SerializeField] private float _cameraOrthographicSize = 2.5f;
+
+    protected virtual void Start()
     {
         var material = Instantiate(_characterSpriteRenderer.material);
         _characterSpriteRenderer.material = material;
@@ -92,7 +94,7 @@ public class CharacterMove : NetworkBehaviour
             Camera mainCamera = Camera.main;
             mainCamera.transform.SetParent(transform);
             mainCamera.transform.localPosition = new Vector3(0f, 0f, -10f);
-            mainCamera.orthographicSize = 2.5f;
+            mainCamera.orthographicSize = _cameraOrthographicSize;
         }
     }
 
