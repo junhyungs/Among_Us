@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using UnityEngine.Rendering.UI;
 
 public class CreateRoomUI : MonoBehaviour
 {
@@ -130,7 +131,13 @@ public class CreateRoomUI : MonoBehaviour
 
     public void CreateRoom() 
     {
-        AMONGUS_RoomManager.singleton.StartHost();
+        var roomManager = AMONGUS_RoomManager.Instance;
+
+        roomManager.MinPlayerCount = _roomData.ImposterCount == 1 ? 4 : _roomData.ImposterCount == 2 ? 7 : 9;
+        roomManager.ImposterCount = _roomData.ImposterCount;
+        roomManager.maxConnections = _roomData.MaxPlayerCount;
+
+        roomManager.StartHost();
     }
 }
 

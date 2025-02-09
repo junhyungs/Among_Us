@@ -2,6 +2,17 @@ using UnityEngine;
 
 public class GameRoomSettingUI : Settings
 {
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        SetPlayerMove(false);
+    }
+
+    private void OnDisable()
+    {
+        SetPlayerMove(true);
+    }
+
     public void ExitRoom()
     {
         var roomManager = AMONGUS_RoomManager.singleton;

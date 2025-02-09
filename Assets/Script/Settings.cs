@@ -14,9 +14,24 @@ public class Settings : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         SetPlayerSettings();
+    }
+
+    protected void SetPlayerMove(bool isMoving)
+    {
+        var myRoomPlayer = AMONGUS_RoomPlayer.MyPlayer;
+
+        var myCharacterMove = myRoomPlayer.CharacterMove;
+
+        if (myRoomPlayer == null ||
+            myCharacterMove == null)
+        {
+            return;
+        }
+
+        myCharacterMove.IsMoving = isMoving;
     }
 
     public void SetControlMode(int controlType)

@@ -13,6 +13,8 @@ public class SpawnPositions : MonoBehaviour
 
     private int _index;
 
+    public int Index => _index;
+
     public Vector3 GetSpawnPosition()
     {
         Vector3 spawnPosition = _spawnPostions[_index++].position;

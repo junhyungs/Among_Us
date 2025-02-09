@@ -1,5 +1,7 @@
 using UnityEngine;
 using Mirror;
+using System.Collections;
+using UnityEngine.UI;
 
 public class CharacterMove : NetworkBehaviour
 {
@@ -20,41 +22,79 @@ public class CharacterMove : NetworkBehaviour
             _isMoving = value;
         }
     }
+
     [SyncVar]
     private float _moveSpeed = 2f;
 
-    private SpriteRenderer _spriteRenderer;
-
-    [SyncVar(hook = nameof(SetPlayerColor_Hook))]
-    public PlayerColorType ColorType;
-
-    public void SetPlayerColor_Hook(PlayerColorType previousColor, PlayerColorType newColor)
+    [SyncVar(hook = nameof(PlayerColor_Hook))]
+    public PlayerColorType CurrentPlayerColor;
+    public void PlayerColor_Hook(PlayerColorType _, PlayerColorType newColor)
     {
-        if(_spriteRenderer == null)
+        if(_ == newColor)
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            return;
         }
 
-        _spriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(newColor));
+        if(_characterSpriteRenderer == null)
+        {
+            _characterSpriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        
+        _characterSpriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(newColor));
+    }
+    //SyncVar는 서버에서 값이 변경되면 모든 클라에게 동기화를 해줌. 
+    //그 과정에서 SyncVar에 등록된 Hook이 호출되고, 다른 클라의 Hook도 호출된다. 
+    //다른 클라들은 서버에서 받은 값을 동기화하고 자신의 권한으로 Hook을 호출하지만,
+    //변경을 요청한 클라이언트의 값이 변경된거지 다른 클라의 값이 변경된건 아니기 때문에
+    //다른 클라들은 매개변수로 둘 다 같은 값을 받게되고, hook은 호출되지만 결과적으로 색은 변경되지 않는다.
+
+    [SerializeField]
+    private Text _nameText;
+
+    [SyncVar(hook = nameof(Hook_SetPlayerName))]
+    private string _playerName;
+
+    public string SyncPlayerNickName
+    {
+        get => _playerName;
+        set
+        {
+            if (isServer)
+            {
+                _playerName = value;
+            }
+        }
     }
 
-    private void Awake()
+    public void Hook_SetPlayerName(string _, string newName)
     {
-        _characterSpriteRenderer = GetComponent<SpriteRenderer>();
+        _nameText.text = newName;   
+    }
+
+    protected virtual void Awake()
+    {
+        if(_characterSpriteRenderer == null)
+        {
+            _characterSpriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        
         _animator = GetComponent<Animator>();
     }
 
+    [SerializeField] private float _cameraOrthographicSize = 2.5f;
+
     protected virtual void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _spriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(ColorType));
+        var material = Instantiate(_characterSpriteRenderer.material);
+        _characterSpriteRenderer.material = material;
+        _characterSpriteRenderer.material.SetColor("_Player_Color", PlayerColor.GetPlayerColor(CurrentPlayerColor));
 
         if (isOwned)
         {
             Camera mainCamera = Camera.main;
             mainCamera.transform.SetParent(transform);
             mainCamera.transform.localPosition = new Vector3(0f, 0f, -10f);
-            mainCamera.orthographicSize = 2.5f;
+            mainCamera.orthographicSize = _cameraOrthographicSize;
         }
     }
 
@@ -72,7 +112,7 @@ public class CharacterMove : NetworkBehaviour
             if(PlayerSettings._controlType == ControlType.KeyboardMouse)
             {
                 Vector3 moveDirection = Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f), 1f);
-                CommandFlipXAndMovement(moveDirection);
+                CommandFlipXAndMovement(moveDirection);            
                 transform.position += moveDirection * _moveSpeed * Time.deltaTime;
                 isMove = moveDirection.magnitude != 0f;
             }
@@ -81,28 +121,20 @@ public class CharacterMove : NetworkBehaviour
                 if (Input.GetMouseButton(0))
                 {
                     Vector3 moveDirection = (Input.mousePosition - new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)).normalized;
-                    CommandFlipXAndMovement(moveDirection);
+                    CommandFlipXAndMovement(moveDirection);              
                     transform.position += moveDirection * _moveSpeed * Time.deltaTime;
                     isMove = moveDirection.magnitude != 0f;
                 }
             }
 
+            _nameText.transform.rotation = Quaternion.identity;
+
             _animator.SetBool("isMove", isMove);
-            //CommandAnimationMovement(isMove);
+     
         }
     }
 
-    [Command]
-    private void CommandAnimationMovement(bool isMove) //최적화를 위해서는 커맨드 호출보다는 NetworkAnimator 컴포넌트 사용하는게 더 좋음.
-    {
-        ClientRPCAnimationMovement(isMove);
-    }
-
-    [ClientRpc]
-    private void ClientRPCAnimationMovement(bool isMove)
-    {
-        _animator.SetBool("isMove", isMove);
-    }
+    #region Command&RPC
 
     [Command]
     private void CommandFlipXAndMovement(Vector3 moveDirection)
@@ -111,7 +143,7 @@ public class CharacterMove : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void ClientRPCFlipXAndMovement(Vector3 moveDirection)
+    public void ClientRPCFlipXAndMovement(Vector3 moveDirection)
     {
         if (moveDirection.x < 0f)
         {
@@ -122,4 +154,22 @@ public class CharacterMove : NetworkBehaviour
             _characterSpriteRenderer.flipX = false;
         }
     }
+
+    public void RequestCommandSetPlayerColor(PlayerColorType colorType)
+    {
+        if (!isOwned)
+        {
+            return;
+        }
+
+        CommandSetPlayerColor(colorType);
+    }
+
+    [Command]
+    private void CommandSetPlayerColor(PlayerColorType colorType)
+    {
+        CurrentPlayerColor = colorType;
+    }
+
+    #endregion
 }

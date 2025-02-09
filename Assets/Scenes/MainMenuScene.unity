@@ -10623,11 +10623,11 @@ MonoBehaviour:
   offlineSceneLoadDelay: 0
   transport: {fileID: 1442043522}
   networkAddress: localhost
-  maxConnections: 100
+  maxConnections: 10
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 8130942073565525677, guid: 3f91616a0cd21ae4db0e9eb8d8a68925, type: 3}
+  playerPrefab: {fileID: 3524746727704242429, guid: 93def69e1e4114145b2e6a37291522a4, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
@@ -10654,6 +10654,8 @@ MonoBehaviour:
   GameplayScene: Assets/Scenes/GamePlayScene.unity
   _allPlayersReady: 0
   clientIndex: 0
+  MinPlayerCount: 0
+  ImposterCount: 0
 --- !u!114 &1442043522
 MonoBehaviour:
   m_ObjectHideFlags: 0
